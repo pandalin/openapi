@@ -1,0 +1,9 @@
+/*
+ * www.jinvovo.com Inc.
+ * Copyright (c) 2015 All Rights Reserved.
+ */
+
+/** bootstrap extentions */
+.nav > li:hover .dropdown-menu {display: block;}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {background-color: #5CB85C}
+.glyphicon {top:2px;}

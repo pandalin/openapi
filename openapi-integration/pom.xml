@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>openapi-parent</artifactId>
+        <groupId>com.jvv.openapi</groupId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>openapi-integration</artifactId>
+
+    <properties>
+
+        <!--会员facade版本-->
+        <customer.facade.version>1.0.0-SNAPSHOT</customer.facade.version>
+        <!--模块是否跳过发布阶段，比如dal、test、web不应该发布到nexus，请设置这些module deploy.skip=true-->
+        <deploy.skip>false</deploy.skip>
+        <gateway.facade.version>1.0.0-SNAPSHOT</gateway.facade.version>
+        <notify.facade.version>1.0.0-SNAPSHOT</notify.facade.version>
+        <social.facade.version>1.0.0-SNAPSHOT</social.facade.version>
+
+    </properties>
+    <dependencies>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-log4j12</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.jvv.customer</groupId>
+            <artifactId>customer-facade</artifactId>
+            <version>${customer.facade.version}</version>
+        </dependency>
+
+        <!--  各个子系统 -->
+        <dependency>
+            <groupId>com.jvv.gateway</groupId>
+            <artifactId>gateway-facade</artifactId>
+            <version>${customer.facade.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jvv.notify</groupId>
+            <artifactId>notify-facade</artifactId>
+            <version>${notify.facade.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jvv.openapi</groupId>
+            <artifactId>openapi-domain</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jvv.social</groupId>
+            <artifactId>social-facade</artifactId>
+            <version>${social.facade.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+
+    </dependencies>
+</project>

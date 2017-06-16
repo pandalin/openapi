@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="${dubbo.application.name}"
+                       owner="${dubbo.application.owner}" organization="${dubbo.application.organization}"/>
+
+    <dubbo:protocol name="dubbo" port="${dubbo.provider.port}"
+                    threads="300"/>
+
+    <dubbo:registry protocol="zookeeper" address="${dubbo.registry.zookeeper}"
+                    register="${dubbo.provider.register}" file="${dubbo.registry.cache.file}"/>
+
+    <dubbo:monitor protocol="registry"/>
+
+    <!-- 提供者默认配置 选用快速失败策略 -->
+    <dubbo:provider timeout="90000" cluster="failfast"/>
+    <dubbo:consumer check="${dubbo.consumer.check}"/>
+
+    <bean id="dubboRemoteProxyFacotry" class="com.jvv.openapi.intergration.DubboRemoteProxyFacotry"/>
+</beans>

@@ -1,0 +1,6 @@
+<table sqlname="merchant"  >
+
+    <column name="status" javatype="com.jvv.openapi.facade.constants.enums.MerchantStatusEnum" typeHandler="com.jvv.openapi.dal.handler.MerchantStatusEnumTypeHandler"/>
+    <column name="prompt_type" javatype="com.jvv.openapi.facade.constants.enums.PromptTypeEnum" typeHandler="com.jvv.openapi.dal.handler.PromptTypeEnumTypeHandler"/>
+
+</table>

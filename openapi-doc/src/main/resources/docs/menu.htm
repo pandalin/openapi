@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>API菜单</title>
+    <style>
+        .document {
+            font-size: 14px;
+        }
+
+        .document table {
+            border-right: 1px solid #9d9d9d;
+            border-bottom: 1px solid #9d9d9d;
+            font-size: 14px;
+        }
+
+        .document table th {
+            border-left: 1px solid #9d9d9d;
+            border-top: 1px solid #9d9d9d;
+            text-align: left;
+            height: 35px;
+            padding-left: 3px;
+            background-color: #dddddd;
+        }
+
+        .document table td {
+            border-left: 1px solid #9d9d9d;
+            border-top: 1px solid #9d9d9d;
+            text-align: left;
+            height: 35px;
+            line-height: 25px;
+            padding-left: 3px;
+        }
+
+        .document .comment {
+            font-style: italic;
+            margin: 2px;
+        }
+
+        .document h3 {
+            font-size: 18px;
+        }
+
+        .document h4 {
+            font-size: 16px;
+        }
+
+        .document .nav li {
+            list-style-type: none
+        }
+
+        a:link, a:visited {
+            color: #333;
+            text-decoration: none
+        }
+
+        a:hover {
+            color: #9b152c;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+<div class="document">
+    <h3>开发资料</h3>
+    <li><a href="OpenApi_dev_guide_v1.0.docx" target="api">开发指南</a></li>
+    <h3>API</h3>
+    <#list menus as e>
+        <li><a href="${e.apiUrl}" target="api">${e.apiName}</a></li>
+    </#list>
+</div>
+</html>

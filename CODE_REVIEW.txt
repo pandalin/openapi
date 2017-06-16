@@ -1,0 +1,41 @@
+金窝窝代码走读记录
+1、业务代码里面出现了System.out.println() 和 e.printStackTrace
+2、返回结果设置时，可以用公共的方法处理：
+例如：
+response.setStatus (result.getStatus ().getCode ());
+response.setMessage (result.getMessage ());
+response.setDetailMessage (result.getDescription ());
+response.setCode (result.getCode ());
+
+ApiResponse 可以写一个方法：
+public <R extends SimpleResult,RES extends ApiResponse>   RES convertFrom(R result,RES response){
+    response.setStatus (result.getStatus ().getCode ());
+    response.setMessage (result.getMessage ());
+    response.setDetailMessage (result.getDescription ());
+    response.setCode (result.getCode ());
+
+    return response;
+}
+
+
+各个Response子类如果需可以覆盖这个方法：
+比如UserDataReportResponse中：
+
+public UserDataReportResponse convertFrom(UserDataReportResult result,UserDataReportResponse response){
+    super.convertFrom(result,response)；
+
+    List<UserDataReportInfo> userInfos = result.getInfos();
+    if (userInfos != null) {
+        UserDataReportResponseData responseDatas = new UserDataReportResponseData ();
+        responseDatas.setUserDataReportInfo (userInfos);
+        response.setDatas (responseDatas);
+    }
+    return response;
+}
+
+3、BeanUtils.copyProperties (request,order);
+尽量更换成：
+Copier.copy(request,order);
+
+4、if(infos!=null && infos.size ()>0)
+可以使用 CollectionUtils.isNotEmpty(infos)

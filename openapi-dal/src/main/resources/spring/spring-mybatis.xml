@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-autowire="byName">
+
+    <context:annotation-config/>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:mybatis/sqlmap/*.xml</value>
+            </list>
+        </property>
+        <property name="typeHandlersPackage" value="com.jvv.customer.dal.handlers.*"/>
+
+        <!--<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>-->
+    </bean>
+
+    <!-- 配置自定义的SqlSessionTemplate模板，注入相关配置 -->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory" />
+    </bean>
+
+    <!-- ======================================================================== -->
+    <!-- 								 mapper DAO bean         	     	      -->
+    <!-- ======================================================================== -->
+    <!--<bean id="orderInfoDAO" class="com.jvv.openapi.dal.mybatis.MybatisOrderInfoDAO"/>-->
+        <!--<bean id="testDAO" class="com.jvv.openapi.dal.mybatis.MybatisTestDAO"/>-->
+        <!-- extra -->
+    <!--<bean id="extraDAO" class="com.jvv.openapi.dal.mybatis.MybatisExtraDAO"/>-->
+    <!-- xxx -->
+
+    <context:component-scan base-package="com.jvv.openapi.dal.mybatis" />
+</beans>

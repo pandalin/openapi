@@ -1,0 +1,19 @@
+/*
+ * www.jinvovo.com Inc.
+ * Copyright (c) 2015 All Rights Reserved.
+ */
+
+.apiContents h3 {
+display: block;
+padding: 0 14px;
+margin: 0;
+font-size: 14px;
+overflow: hidden;
+background: #eef3f8;
+}
+.tableAPI { border:1px solid #d0dbe6; border-collapse: collapse; font-size:12px;width:100%}
+.tableAPI th { background:#f2f5f9; color:#3f4346;font-size:12px;}
+.tableAPI td, .tableAPI th { border:1px solid #d0dbe6; line-height:20px; padding:4px 10px;font-size:12px; }
+.tableAPI td { text-align:left;font-size:12px;}
+
+.table>tbody>tr>td,.table>tbody>tr>th {border:1px solid #ddd;}
